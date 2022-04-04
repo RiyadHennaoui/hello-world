@@ -10,32 +10,21 @@ import { FavoriteChangedEventArgs } from './favorite/favorite.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'hello-world app';
-  title1: string = ''; 
+  
 
-  post = {
-    title: "Title",
-    isFavorite: true
+  courses;
+
+  loadCourses(){
+    this.courses = [
+      {id: 1, name: 'course 1'},
+      {id: 2, name: 'course 2'},
+      {id: 3, name: 'course 3'},
+    ];
   }
 
-  onFavoriteChanged(eventArgs: { newValue: FavoriteChangedEventArgs }){
-    console.log("Favorite change: ", eventArgs); 
+  trackCourse(index, course){
+    return course ? course.id : undefined; 
   }
-
-  tweet = {
-    body: '...',
-    likesCount: 10,
-    isLiked: true
-  }
-
-  courses = [1, 2];
-
-  coursesfor = [
-    {id: 1, name: 'course 1'},
-    {id: 2, name: 'course 2'},
-    {id: 3, name: 'course 3'},
-  ]
-
-  viewMode = 'something else';
+  
 
 }
