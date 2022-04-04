@@ -38,4 +38,16 @@ export class AppComponent {
 
   viewMode = 'something else';
 
+  onAdd(){
+    this.coursesfor.push({id: 4, name: 'course4'});
+  }
+
+  // onRemove(course){
+  //   let index = this.coursesfor.indexOf(course);
+  //   this.coursesfor.splice(index, 1);
+  // }
+  onChange(course){
+    course.name= 'UPDATE';
+  }
+
 }

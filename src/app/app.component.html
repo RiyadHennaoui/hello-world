@@ -530,9 +530,11 @@
   <div *ngSwitchCase="'list'">List View Content</div>
   <div *ngSwitchDefault>Otherwise</div>
 </div> -->
-
+<button (click)="onAdd()">Add</button>
 <ul>
   <li *ngFor="let course of coursesfor; even as isEven">
     {{ course.name }} <span *ngIf="isEven">(Even)</span>
+    <!-- <button (click)="onRemove(course)">Remove</button> -->
+    <button (click)="onChange(course)">Remove</button>
   </li>
 </ul>
