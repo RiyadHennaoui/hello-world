@@ -14,6 +14,7 @@ import { TitleCasePipe } from './title-case.pipe';
 import { BoostrapPanelComponent } from './boostrap-panel/boostrap-panel.component';
 import { TwitterComponent } from './twitter/twitter.component';
 import { InputFormatDirective } from './input-format.directive';
+import { ZippyComponent } from './zippy/zippy.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { InputFormatDirective } from './input-format.directive';
     TitleCasePipe,
     BoostrapPanelComponent,
     TwitterComponent,
-    InputFormatDirective
+    InputFormatDirective,
+    ZippyComponent
   ],
   imports: [
     BrowserModule,
