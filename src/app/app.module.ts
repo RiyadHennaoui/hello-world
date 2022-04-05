@@ -15,6 +15,7 @@ import { BoostrapPanelComponent } from './boostrap-panel/boostrap-panel.componen
 import { TwitterComponent } from './twitter/twitter.component';
 import { InputFormatDirective } from './input-format.directive';
 import { ZippyComponent } from './zippy/zippy.component';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ZippyComponent } from './zippy/zippy.component';
     BoostrapPanelComponent,
     TwitterComponent,
     InputFormatDirective,
-    ZippyComponent
+    ZippyComponent,
+    ContactFormComponent
   ],
   imports: [
     BrowserModule,
