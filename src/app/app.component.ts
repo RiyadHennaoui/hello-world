@@ -11,20 +11,7 @@ import { FavoriteChangedEventArgs } from './favorite/favorite.component';
 })
 export class AppComponent {
   
-
-  courses;
-
-  loadCourses(){
-    this.courses = [
-      {id: 1, name: 'course 1'},
-      {id: 2, name: 'course 2'},
-      {id: 3, name: 'course 3'},
-    ];
-  }
-
-  trackCourse(index, course){
-    return course ? course.id : undefined; 
-  }
+  canSave = false;
   
 
 }
