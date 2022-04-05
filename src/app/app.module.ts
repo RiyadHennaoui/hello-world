@@ -13,6 +13,7 @@ import { FavoriteComponent } from './favorite/favorite.component';
 import { TitleCasePipe } from './title-case.pipe';
 import { BoostrapPanelComponent } from './boostrap-panel/boostrap-panel.component';
 import { TwitterComponent } from './twitter/twitter.component';
+import { InputFormatDirective } from './input-format.directive';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { TwitterComponent } from './twitter/twitter.component';
     FavoriteComponent,
     TitleCasePipe,
     BoostrapPanelComponent,
-    TwitterComponent
+    TwitterComponent,
+    InputFormatDirective
   ],
   imports: [
     BrowserModule,
