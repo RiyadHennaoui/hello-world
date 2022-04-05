@@ -1,36 +1,42 @@
-<form>
-  <div class="form-group">
-    <label for="firstname">First Name</label>
-    <input
-      required
-      minlength="4"
-      maxlength="10"
-      pattern="banana"
-      ngModel
-      name="firstname"
-      #firstname="ngModel"
-      (change)="log(firstname)"
-      id="firstname"
-      type="text"
-      class="form-control"
-    />
-    <div
-      class="alert alert-danger"
-      *ngIf="firstname.touched && !firstname.valid"
-    >
-      <div *ngIf="firstname.errors?.['required']">First name is required.</div>
-      <div *ngIf="firstname.errors?.['minlength']">
-        Firstname should be minimum
-        {{ firstname.errors?.['minlength'].requiredLength}} charaters
-      </div>
-      <div *ngIf="firstname.errors?.['maxlength']">
-        Firstname should be maximum 10 charaters
-      </div>
-      <div *ngIf="firstname.errors?.['pattern']">
-        Firstname doesn't match the pattern.
+<form #f="ngForm" (ngSubmit)="submit(f)">
+  <div ngModelGroup="contact" #contact="ngModelGroup">
+    <div *ngIf="!contact.valid"></div>
+    <div class="form-group">
+      <label for="firstname">First Name</label>
+      <input
+        required
+        minlength="4"
+        maxlength="10"
+        pattern="banana"
+        ngModel
+        name="firstname"
+        #firstname="ngModel"
+        (change)="log(firstname)"
+        id="firstname"
+        type="text"
+        class="form-control"
+      />
+      <div
+        class="alert alert-danger"
+        *ngIf="firstname.touched && !firstname.valid"
+      >
+        <div *ngIf="firstname.errors?.['required']">
+          First name is required.
+        </div>
+        <div *ngIf="firstname.errors?.['minlength']">
+          Firstname should be minimum
+          {{ firstname.errors?.['minlength'].requiredLength}} charaters
+        </div>
+        <div *ngIf="firstname.errors?.['maxlength']">
+          Firstname should be maximum 10 charaters
+        </div>
+        <div *ngIf="firstname.errors?.['pattern']">
+          Firstname doesn't match the pattern.
+        </div>
       </div>
     </div>
   </div>
+
   <div class="form-group">
     <label for="comment">Comment</label>
     <textarea
@@ -42,5 +48,5 @@
       class="form-control"
     ></textarea>
   </div>
-  <button class="btn btn-primary">Submit</button>
+  <button class="btn btn-primary" [disabled]="!f.valid">Submit</button>
 </form>
