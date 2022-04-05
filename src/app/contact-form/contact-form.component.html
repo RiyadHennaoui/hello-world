@@ -3,6 +3,9 @@
     <label for="firstname">First Name</label>
     <input
       required
+      minlength="4"
+      maxlength="10"
+      pattern="banana"
       ngModel
       name="firstname"
       #firstname="ngModel"
@@ -15,7 +18,17 @@
       class="alert alert-danger"
       *ngIf="firstname.touched && !firstname.valid"
     >
-      First Name is required
+      <div *ngIf="firstname.errors?.['required']">First name is required.</div>
+      <div *ngIf="firstname.errors?.['minlength']">
+        Firstname should be minimum
+        {{ firstname.errors?.['minlength'].requiredLength}} charaters
+      </div>
+      <div *ngIf="firstname.errors?.['maxlength']">
+        Firstname should be maximum 10 charaters
+      </div>
+      <div *ngIf="firstname.errors?.['pattern']">
+        Firstname doesn't match the pattern.
+      </div>
     </div>
   </div>
   <div class="form-group">
