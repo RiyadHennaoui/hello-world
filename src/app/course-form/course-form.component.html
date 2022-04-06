@@ -31,10 +31,12 @@
   </div>
 
   <div class="form-group">
-    <label for="contactMethod">Category</label>
+    <label for="category">Category</label>
     <select
+      required
       ngModel
       name="categoryMethod"
+      #category="ngModel"
       id="categoryMethod"
       class="form-control"
     >
@@ -43,6 +45,12 @@
         {{ method.name }}
       </option>
     </select>
+    <div
+      *ngIf="category.touched && category.invalid"
+      class="alert alert-danger"
+    >
+      Category fields is required.
+    </div>
   </div>
   <div class="checkbox">
     <label>
