@@ -7,6 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CourseFormComponent  {
 
-  
+  categoryMethod = [
+    {id: 1, name: 'Development'},
+    {id: 2, name: 'Art'},
+    {id: 3, name: 'Languages'},
+  ];
+
+  log(x){ console.log(x);}
+
+  submit(f){ 
+    console.log(f);
+  }
 
 }

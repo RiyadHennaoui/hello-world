@@ -1,1 +1,58 @@
-<p>course-form works!</p>
+<form #f="ngForm" (ngSubmit)="submit(f)">
+    <div ngModelGroup="contact" #contact="ngModelGroup">
+      <div *ngIf="!contact.valid"></div>
+      <div class="form-group">
+        <label for="firstname">Course Name</label>
+        <input
+          required
+          minlength="5"
+          maxlength="10"
+          ngModel
+          name="firstname"
+          #firstname="ngModel"
+          (change)="log(firstname)"
+          id="firstname"
+          type="text"
+          class="form-control"
+        />
+        <div
+          class="alert alert-danger"
+          *ngIf="firstname.touched && !firstname.valid"
+        >
+          <div *ngIf="firstname.errors?.['required']">
+            Course name is required.
+          </div>
+          <div *ngIf="firstname.errors?.['minlength']">
+            Course name should be minimum
+            {{ firstname.errors?.['minlength'].requiredLength}} charaters
+          </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="contactMethod">Category</label>
+            <select
+            ngModel
+            name="categoryMethod"
+            id="categoryMethod"
+            class="form-control"
+            >
+            <option value=""></option>
+            <option *ngFor="let method of categoryMethod" [ngValue]="method">
+                {{ method.name }}
+            </option>
+        </select>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" ngModel name="hasGuarantee" /> 30-day money-back guarantee
+      </label>
+    </div>
+    <p>
+        {{ f.value | json }}
+      </p>
+      <button class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+    </form>
+
+  
