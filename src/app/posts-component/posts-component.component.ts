@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'posts-component',
   templateUrl: './posts-component.component.html',
   styleUrls: ['./posts-component.component.css']
 })
-export class PostsComponentComponent  {
+export class PostsComponentComponent implements OnInit {
   posts!: any[];
   private url = 'https://jsonplaceholder.typicode.com/posts'; 
   result: any;
@@ -22,11 +22,15 @@ export class PostsComponentComponent  {
   // }
 
   constructor(private http: HttpClient){
-    fetch(this.url)
-    .then(response => response.json())
-    .then(json => this.posts = json)
-    .then(() => this.sortTabByIdDesc(this.posts));
+   
     };
+
+    ngOnInit(): void {
+      fetch(this.url)
+      .then(response => response.json())
+      .then(json => this.posts = json)
+      .then(() => this.sortTabByIdDesc(this.posts));
+    }
     
   
 
