@@ -31,6 +31,10 @@ export class PostsComponentComponent implements OnInit {
         console.log(response);
         this.posts = response as [];
         this.sortTabByIdDesc(this.posts);
+      },
+      error => {
+        alert('An unexpected error occurred');
+        console.log(error);
       });
     }
 
@@ -52,6 +56,17 @@ export class PostsComponentComponent implements OnInit {
       this.posts.push(post);
       this.titre = '';
       this.sortTabByIdDesc(this.posts);
+    },
+    (error: Response) => {
+      if(error.status === 400){
+        // this.form.setErrors(error.json())
+      }else{
+
+      
+
+      alert('An unexpected error occurred');
+      console.log(error);
+      }
     });
   }
 
@@ -64,6 +79,10 @@ export class PostsComponentComponent implements OnInit {
     this.service.updatePost(post)
     .subscribe(response => {
       console.log(response);
+    },
+    error => {
+      alert('An unexpected error occurred');
+      console.log(error);
     })
     //this.http.put(this.url, JSON.stringify(post));
 
@@ -74,6 +93,13 @@ export class PostsComponentComponent implements OnInit {
     .subscribe(response => {
       let index = this.posts.indexOf(post); 
       this.posts.splice(index, 1);
+    },
+    (error: Response) => { 
+      if(error.status === 404)
+        alert ('This post has already been deleted')
+      else
+        alert('An unexpected error occurred');
+        console.log(error);
     })
   }
 
